@@ -1,6 +1,11 @@
 @reference "tailwindcss";
 
 .custom-md {
+  /* 首行缩进（2 个中文字宽） */
+  p {
+    text-indent: 2em;
+  }
+
   h1 {
     @apply text-3xl;
   }

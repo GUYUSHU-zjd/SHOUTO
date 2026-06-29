@@ -6,7 +6,7 @@ const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 export const siteConfig: SiteConfig = {
   title: "玉树世界",
   subtitle: "眼泪成诗",
-  siteURL: "https://mizuki.mysqil.com/", // 请替换为你的站点URL，以斜杠结尾
+  siteURL: "https://shouto.vercel.app/", // 请替换为你的站点URL，以斜杠结尾
   siteStartDate: "2026-06-01", // 站点开始运行日期，用于站点统计组件计算运行天数
 
   lang: SITE_LANG,
@@ -21,8 +21,8 @@ export const siteConfig: SiteConfig = {
     anime: false, // 番剧页面开关
     diary: true, // 日记页面开关
     friends: false, // 友链页面开关
-    projects: true, // 项目页面开关
-    skills: true, // 技能页面开关
+    projects: false, // 项目页面开关
+    skills: false, // 技能页面开关
     timeline: false, // 时间线页面开关
     albums: true, // 相册页面开关
     devices: true, // 设备页面开关
@@ -33,7 +33,7 @@ export const siteConfig: SiteConfig = {
     // 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
     mode: "text-icon",
     // 顶栏标题文本
-    text: "MizukiUI",
+    text: "玉树世界",
     // 顶栏标题图标路径，默认使用 public/assets/home/home.webp
     icon: "assets/home/home.webp",
     // 网站Logo图片路径
@@ -52,7 +52,7 @@ export const siteConfig: SiteConfig = {
   },
 
   bilibili: {
-    vmid: "your-bilibili-vmid", // 在此处设置你的Bilibili用户ID (uid)，例如 "1129280784"
+    vmid: "436382952", // 在此处设置你的Bilibili用户ID (uid)，例如 "1129280784"
     fetchOnDev: false, // 是否在开发环境下获取 Bilibili 数据（默认 false）
     coverMirror: "", // 封面图片镜像源（可选，如果需要使用镜像源，例如 "https://images.weserv.nl/?url="）
     useWebp: true, // 是否使用WebP格式（默认 true）
@@ -112,6 +112,7 @@ export const siteConfig: SiteConfig = {
         "/assets/desktop-banner/2.webp",
         "/assets/desktop-banner/3.webp",
         "/assets/desktop-banner/4.webp",
+        "/assets/desktop-banner/5.webp",
       ], // 桌面横幅图片
       mobile: [
         "/assets/mobile-banner/1.webp",

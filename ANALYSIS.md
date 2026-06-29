@@ -1310,20 +1310,27 @@ git push origin main
 
 ### 18.5 日后更新流程
 
-部署完成后，日常发布新文章只需三步：
+> ⚠️ **不需要重新初始化仓库。** `git init`、`git remote add` 只在首次部署时做一次，之后永远不需要再碰。
+
+日常更新就是三行命令：
 
 ```bash
-# 1. 编辑内容（改文章、配置、图片等）
-# 2. 本地预览确认
-pnpm dev
-
-# 3. 提交并推送 → 自动部署
 git add .
-git commit -m "发布新文章：XXX"
+git commit -m "描述你改了什么"
 git push
 ```
 
-去 Vercel / GitHub Actions 看一眼部署状态，30-60 秒后刷新你的博客即可看到更新。
+**典型场景：**
+
+| 操作 | commit 示例 |
+|------|------------|
+| 发布新文章 | `git commit -m "新文章：葬送的芙莉莲观后感"` |
+| 换壁纸 | `git commit -m "更换桌面端横幅壁纸"` |
+| 改配置 | `git commit -m "修改主题色为粉色系"` |
+| 更新番剧数据 | `git commit -m "更新四月新番追番列表"` |
+| 改关于页 | `git commit -m "更新关于页面内容"` |
+
+push 后 Vercel 自动重新部署，30-60 秒后刷新博客即可看到更新。去 Vercel Dashboard 的 Deployments 标签页可以查看构建进度。
 
 ---
 
@@ -1391,3 +1398,27 @@ git push
 │       自动部署，30 秒后全世界可见                      │
 └──────────────────────────────────────────────────────┘
 ```
+
+### 18.9 补充：Vercel 官方 AI 插件
+
+Vercel 提供了一个官方的 AI 编码助手插件 `vercel/vercel-plugin`，可以让 Claude Code、Cursor、Codex 等工具在处理 Vercel 相关问题（Serverless Functions、Edge Config、ISR、环境变量管理等）时拥有更精准的领域知识。
+
+**安装方式：**
+
+```bash
+npx plugins add vercel/vercel-plugin
+```
+
+**与本项目的关系：**
+
+当前阶段**不需要安装**。Mizuki 博客与 Vercel 的交互仅限于"导入 GitHub 仓库 → 自动构建 → 静态文件托管"，不涉及 Vercel 的任何高阶特性。ANALYSIS.md 第十八章已经完整覆盖了部署所需的所有知识。当你未来构建全栈项目，真正需要用到 Vercel 复杂功能时再考虑安装。
+
+**环境兼容性说明：**
+
+| 环境                      | 是否支持此插件    |
+| ------------------------- | ----------------- |
+| Claude Code CLI（终端版） | ✅ 理论上兼容     |
+| Claude Code VS Code 扩展  | ❌ 不支持外部插件 |
+| Cursor / Codex            | ✅ 支持           |
+
+VS Code 扩展版的 Claude Code 无法通过 `npx plugins add` 加载外部插件，如需使用需切换到 CLI 版本（终端运行 `claude` 命令）。
